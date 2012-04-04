@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>MusicPlayer specs | Jasmine Test Runner</title>
+    <link rel="stylesheet" href="jasmine/jasmine.css">
+    <script src="jasmine/jasmine.js"></script>
+    <script src="jasmine/jasmine-html.js"></script>
+    <script src="javascripts/helpers/Sinon.js"></script>
+    <script src="javascripts/helpers/mockData.js"></script>
+</head>
+<body>
+    <script src="../js/libs/require.js"></script>
+    <script>
+        //config
+        require({
+            baseUrl : '../js',
+            paths : {
+                'jquery':     'libs/jquery.1.7.1',
+                'mustache':   'libs/mustache',
+                'underscore': 'libs/underscore',
+                'backbone':   'libs/backbone',
+                'backboneLS': 'libs/backbone.localStorage'
+            },
+            waitSeconds : 5,
+//            urlArgs : 'bust='+ (+new Date)
+        })
+
+        //init
+        require(
+            [
+            '../spec/javascripts/commonSpec',
+            '../spec/javascripts/messageSpec',
+            '../spec/javascripts/playerSpec',
+            '../spec/javascripts/playlistSpec',
+            '../spec/javascripts/browserSpec'
+            ],
+            function(){
+                jasmine.getEnv().addReporter(new jasmine.TrivialReporter())
+                jasmine.getEnv().execute()
+            }
+        )
+    </script>
+</body>
+</html>
